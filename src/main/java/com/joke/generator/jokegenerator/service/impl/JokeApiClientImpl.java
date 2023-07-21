@@ -4,6 +4,7 @@ import com.joke.generator.jokegenerator.dto.JokeDto;
 import com.joke.generator.jokegenerator.exception.ApiException;
 import com.joke.generator.jokegenerator.service.JokeApiClient;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
@@ -20,8 +21,8 @@ import java.util.concurrent.Future;
 public class JokeApiClientImpl implements JokeApiClient {
     @Value("${joke.api.url}")
     private String jokeApiUrl;
-
-    RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    RestTemplate restTemplate;
 
     public JokeDto callJokeApi(){
         try {

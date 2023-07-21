@@ -34,7 +34,7 @@ public class JokeServiceImpl implements JokeService {
                     .limit(count).toList());
                 return jokeResponse;
             }
-            for(int i = 0; i<count/10; i++){
+            for(int i = 0; i<=count/10; i++){
                 Future<List<JokeDto>> future =  jokeApiClient.getTenJokes();
                 futures.add(future);
             }
